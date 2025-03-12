@@ -1,15 +1,21 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { WorkflowList } from "./WorkflowList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const WorkflowPage = () => {
-    const [isDark, setDark] = useState<boolean>(false);
+    const [isDark, setDark] = useState<boolean>(() => {
+        return localStorage.getItem("theme") === "dark" ? true : false;
+    });
+
+    useEffect(() => {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    }, [isDark]);
 
     return (
         <div className={isDark ? "dark" : "light"}>
             <SidebarProvider>       
                 <WorkflowList isDark={isDark} setDark={setDark} />
-                <main>
+                <main className="flex-1 p-4">
                     <SidebarTrigger />
                 </main>
             </SidebarProvider>
