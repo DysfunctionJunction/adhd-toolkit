@@ -13,59 +13,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { Card } from "./ui/card";
 
 interface props {
     isDark : boolean;
     setDark : React.Dispatch<React.SetStateAction<boolean>>;
+    workflows: Workflow[];
+    setActiveWorkflow: React.Dispatch<React.SetStateAction<Workflow | undefined>>;
     props? : React.ComponentProps<typeof Sidebar> | undefined;
 }
 
-const workflows: Workflow[] = [
-    {
-        id: "1",
-        name: "Morning Routine",
-        description: "Daily morning tasks and rituals",
-        threads: [
-            {
-                id: "2.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
-    },
-    {
-        id: "2",
-        name: "Work Setup",
-        description: "Preparation for productive work session",
-        threads: [
-            {
-                id: "2.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
-    },
-    {
-        id: "3",
-        name: "Evening Shutdown",
-        description: "End of day wind-down routine",
-        threads: [
-            {
-                id: "3.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
-    }
-];
 
-export function WorkflowList({isDark, setDark, ...props}: props) {
+
+export function WorkflowList({isDark, setDark, workflows, setActiveWorkflow, ...props}: props) {
     return (
     <Sidebar className="border-r-0" {...props}>
 
@@ -85,12 +46,13 @@ export function WorkflowList({isDark, setDark, ...props}: props) {
         <SidebarContent>
             {workflows.map(workflow => {
                 return (
-                <>
-                    <Card key={workflow.id}>
+                    <Card 
+                      className="p-4 mr-4 ml-4 mt-2 md-2" 
+                      key={workflow.id}
+                      onClick={() => setActiveWorkflow(workflow)}
+                    >
                         {workflow.name}: {workflow.description}
                     </Card>
-                    <SidebarSeparator className="mx-0" />
-                </>
                 );
             })}
         </SidebarContent>
