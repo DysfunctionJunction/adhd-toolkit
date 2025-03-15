@@ -2,7 +2,7 @@ import React from "react";
 
 import { Workflow } from "../types";
 
-import { Plus, Sun, Moon } from "lucide-react";
+import { Plus, Sun, Moon, Play } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import {
   Sidebar,
@@ -14,7 +14,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { Card } from "./ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 interface props {
     isDark : boolean;
@@ -47,11 +47,27 @@ export function WorkflowList({isDark, setDark, workflows, setActiveWorkflow, ...
             {workflows.map(workflow => {
                 return (
                     <Card 
-                      className="p-4 mr-4 ml-4 mt-2 md-2" 
+                      className="p-2 mr-4 ml-4 mt-2 md-2" 
                       key={workflow.id}
                       onClick={() => setActiveWorkflow(workflow)}
                     >
-                        {workflow.name}: {workflow.description}
+                        <div className="grid grid-cols-[70%_30%]">
+                            <div>
+                                <CardHeader className="px-1">
+                                    <CardTitle>{workflow.name}</CardTitle>
+                                    <CardDescription>{workflow.description}</CardDescription>
+                                </CardHeader>
+                                {/* <CardContent className="px-1">
+                                    <p>Card Content</p>
+                                </CardContent> */}
+                            </div>
+                            <div className="flex h-auto">
+                                <div className="m-auto">
+                                    <Play />
+                                </div>
+                            </div>
+
+                        </div>
                     </Card>
                 );
             })}

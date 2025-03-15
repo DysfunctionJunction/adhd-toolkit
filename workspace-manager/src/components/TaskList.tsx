@@ -9,13 +9,19 @@ interface taskListProps{
 const TaskList = (props: taskListProps) => {
 
     return (
-        <Card className="m-4">
+        <Card className="m-4 h-screen">
             <CardHeader>
                 <CardTitle>Card Title</CardTitle>
                 <CardDescription>Card Description</CardDescription>
             </CardHeader>
             <CardContent>
-                <p>Card Content</p>
+                {props.thread && props.thread.tasks.map(task => {
+                    return (
+                        <div>
+
+                        </div>
+                    )
+                })}
             </CardContent>
             <CardFooter>
                 <p>Card Footer</p>

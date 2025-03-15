@@ -68,10 +68,10 @@ const WorkflowPage = () => {
         <div className={isDark ? "dark" : "light"}>
             <SidebarProvider>       
                 <WorkflowList {...workflowListProps} />
-                <div className="flex-1 p-4">
+                <main className="flex-1 p-4 bg-secondary">
                     <SidebarTrigger />
                     <ThreadList activeWorkflow={activeWorkflow} />
-                </div>
+                </main>
             </SidebarProvider>
         </div>
     )
