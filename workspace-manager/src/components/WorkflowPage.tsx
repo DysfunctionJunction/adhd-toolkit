@@ -1,48 +1,72 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { WorkflowList } from "./WorkflowList";
 import { useEffect, useState } from "react";
-import { Workflow } from "@/types";
+import { Thread, Workflow, Task } from "@/types";
 import ThreadList from "./ThreadList";
+
+const default_tasks: Task[] = [
+    {
+        id: "1",
+        name: "Task 1",
+        description: "First task description",
+        status: "completed",
+        duration: 1
+    },
+    {
+        id: "2",
+        name: "Task 2",
+        description: "First task description",
+        status: "completed",
+        duration: 3
+    },
+    {
+        id: "3",
+        name: "Task 3",
+        description: "First task description",
+        status: "completed",
+        duration: 5
+    }
+];
+
+const default_threads: Thread[] = [
+    {
+        id: "1",
+        name: "Thread 1",
+        description: "Task Queue 1",
+        tasks: default_tasks
+    },
+    {
+        id: "2",
+        name: "Thread 2",
+        description: "Task Queue 2",
+        tasks: default_tasks
+    },
+    {
+        id: "3",
+        name: "Thread 3",
+        description: "Task Queue 3",
+        tasks: default_tasks
+    }
+];
 
 const workflows: Workflow[] = [
     {
         id: "1",
         name: "Morning Routine",
         description: "Daily morning tasks and rituals",
-        threads: [
-            {
-                id: "2.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
+        threads: default_threads
     },
     {
         id: "2",
         name: "Work Setup",
         description: "Preparation for productive work session",
-        threads: [
-            {
-                id: "2.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
+        threads: default_threads
     },
     {
         id: "3",
         name: "Evening Shutdown",
         description: "End of day wind-down routine",
-        threads: [
-            {
-                id: "3.1",
-                name: "main",
-                description: "single thread",
-                tasks: []
-            }
-        ]
+        threads: default_threads
     }
 ];
 
@@ -68,7 +92,7 @@ const WorkflowPage = () => {
         <div className={isDark ? "dark" : "light"}>
             <SidebarProvider>       
                 <WorkflowList {...workflowListProps} />
-                <main className="flex-1 p-4 bg-secondary">
+                <main className="flex-1 bg-secondary flex-col">
                     <SidebarTrigger />
                     <ThreadList activeWorkflow={activeWorkflow} />
                 </main>
