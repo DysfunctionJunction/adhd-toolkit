@@ -17,12 +17,12 @@ const TaskList = (props: taskListProps) => {
                 <CardTitle>{props.thread.name}</CardTitle>
                 <CardDescription>{props.thread.description}</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col overflow-y-scroll ">
-                <ScrollArea type="always" className="flex-1 bg-accent-foreground">
-                    <div>
+            <CardContent className="flex flex-col overflow-y-scroll w-full">
+                <ScrollArea type="always" className="flex-1 bg-secondary p-[12px] rounded-2xl">
+                    <div className="p-3 gap-3">
                         {props.thread && props.thread.tasks.map(task => {
                             return (
-                                <div key={task.id}>
+                                <div key={task.id} className="ml-2 mr-2 mt-1 mb-1">
                                     <TaskCard task={task} />
                                 </div>
                             )
