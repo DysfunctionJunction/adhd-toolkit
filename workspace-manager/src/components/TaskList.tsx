@@ -1,7 +1,8 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Thread } from "@/types";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import TaskCard from "./Task";
+import {  } from "@radix-ui/react-scroll-area";
 
 interface taskListProps{
     thread: Thread;
@@ -16,20 +17,20 @@ const TaskList = (props: taskListProps) => {
                 <CardTitle>{props.thread.name}</CardTitle>
                 <CardDescription>{props.thread.description}</CardDescription>
             </CardHeader>
-            <CardContent>
-                <ScrollArea className="h-fit w-full rounded-md border p-4">
-                    {props.thread && props.thread.tasks.map(task => {
-                        return (
-                            <>
-                                <TaskCard key={task.id} task={task} />
-                            </>
-                        )
-                    })}
+            <CardContent className="flex flex-col overflow-y-scroll ">
+                <ScrollArea type="always" className="flex-1 bg-accent-foreground">
+                    <div>
+                        {props.thread && props.thread.tasks.map(task => {
+                            return (
+                                <div key={task.id}>
+                                    <TaskCard task={task} />
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <ScrollBar />
                 </ScrollArea>
             </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
         </Card>
     );
 }

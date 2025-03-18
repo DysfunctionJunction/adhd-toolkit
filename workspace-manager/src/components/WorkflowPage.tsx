@@ -25,6 +25,20 @@ const default_tasks: Task[] = [
         description: "First task description",
         status: "completed",
         duration: 5
+    },
+    {
+        id: "4",
+        name: "Task 4",
+        description: "First task description",
+        status: "completed",
+        duration: 5
+    },
+    {
+        id: "5",
+        name: "Task 5",
+        description: "First task description",
+        status: "completed",
+        duration: 5
     }
 ];
 
@@ -92,7 +106,7 @@ const WorkflowPage = () => {
         <div className={isDark ? "dark" : "light"}>
             <SidebarProvider>       
                 <WorkflowList {...workflowListProps} />
-                <main className="flex-1 bg-secondary flex-col">
+                <main className="flex-1 bg-secondary">
                     <SidebarTrigger />
                     <ThreadList activeWorkflow={activeWorkflow} />
                 </main>
