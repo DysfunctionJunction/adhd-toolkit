@@ -26,7 +26,7 @@ interface props {
 
 
 
-export function WorkflowList({isDark, setDark, workflows, setActiveWorkflow, ...props}: props) {
+export function WorkflowListSidebar({isDark, setDark, workflows, setActiveWorkflow, ...props}: props) {
     return (
     <Sidebar className="border-r-0" {...props}>
 

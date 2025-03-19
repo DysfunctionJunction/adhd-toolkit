@@ -1,5 +1,5 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { WorkflowList } from "./WorkflowList";
+import { WorkflowListSidebar } from "./WorkflowListSidebar";
 import { useEffect, useState } from "react";
 import { Thread, Workflow, Task } from "@/types";
 import ThreadList from "./ThreadList";
@@ -105,9 +105,12 @@ const WorkflowPage = () => {
     return (
         <div className={isDark ? "dark" : "light"}>
             <SidebarProvider>       
-                <WorkflowList {...workflowListProps} />
-                <main className="flex-1 bg-secondary">
+                <WorkflowListSidebar {...workflowListProps} />
+                <main className="flex-1 bg-secondary text-foreground p-2">
                     <SidebarTrigger />
+                    <h3 className="inline leading-7">
+                        { activeWorkflow?.name }   
+                    </h3>
                     <ThreadList activeWorkflow={activeWorkflow} />
                 </main>
             </SidebarProvider>
