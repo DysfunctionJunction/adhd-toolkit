@@ -1,9 +1,9 @@
-import WorkflowPage from './components/WorkflowPage';
+import MainPage from './components/MainPage';
 
 function App() {
   return (
     <>
-      <WorkflowPage />
+      <MainPage />
     </>
   )
 }

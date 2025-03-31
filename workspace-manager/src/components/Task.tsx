@@ -1,5 +1,5 @@
-import { Task as Task } from '@/types';
-import { Card, CardDescription, CardTitle } from '@/components/ui/card';
+import { Task } from '@/types';
+import { Card, CardDescription, CardFooter, CardTitle } from '@/components/ui/card';
 
 interface taskProps {
     task: Task
@@ -7,9 +7,14 @@ interface taskProps {
 
 const TaskCard = (props: taskProps) => {
     return (
-        <Card className="task">
+        <Card className="p-3 task">
             <CardTitle>{props.task.name}</CardTitle>
-            {props.task.description && <CardDescription>{props.task.description}</CardDescription>}
+            <CardDescription>
+                {props.task.description && props.task.description}
+            </CardDescription>
+            <CardFooter>
+                {props.task.duration && `${props.task.duration} seconds`}
+            </CardFooter>
         </Card>
     );
 };

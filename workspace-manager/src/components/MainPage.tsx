@@ -2,7 +2,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { WorkflowListSidebar } from "./WorkflowListSidebar";
 import { useEffect, useState } from "react";
 import { Thread, Workflow, Task } from "@/types";
-import ThreadList from "./ThreadList";
+import WorkflowEditor from "./WorkflowEditor";
 
 const default_tasks: Task[] = [
     {
@@ -84,7 +84,7 @@ const workflows: Workflow[] = [
     }
 ];
 
-const WorkflowPage = () => {
+const MainPage = () => {
     const [isDark, setDark] = useState<boolean>(() => {
         return localStorage.getItem("theme") === "dark" ? true : false;
     });
@@ -111,11 +111,11 @@ const WorkflowPage = () => {
                     <h3 className="inline leading-7">
                         { activeWorkflow?.name }   
                     </h3>
-                    <ThreadList activeWorkflow={activeWorkflow} />
+                    <WorkflowEditor activeWorkflow={activeWorkflow} />
                 </main>
             </SidebarProvider>
         </div>
     )
 }
 
-export default WorkflowPage;
+export default MainPage;

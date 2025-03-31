@@ -6,7 +6,7 @@ interface threadListProps {
 }
 
 // ThreadList or Workflow
-const ThreadList = (props: threadListProps) => {
+const WorkflowEditor = (props: threadListProps) => {
     const threads = props.activeWorkflow?.threads;
 
     if (!threads){
@@ -22,4 +22,4 @@ const ThreadList = (props: threadListProps) => {
     );
 }
 
-export default ThreadList;
+export default WorkflowEditor;
